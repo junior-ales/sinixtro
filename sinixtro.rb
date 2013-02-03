@@ -19,4 +19,13 @@ class Sinixtro
       f.write("run Sinatra::Application")
     end
   end
+
+  def create_controller
+    controller_file_path = File.join(@project_name, 'lib')
+    Dir.mkdir(controller_file_path)
+
+    File.open(File.join(controller_file_path, 'controller.rb'), 'w') do |f|
+      f.write("")
+    end
+  end
 end

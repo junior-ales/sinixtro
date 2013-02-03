@@ -27,6 +27,13 @@ describe 'Create the project' do
     File.new(configru_file_path).readlines[1].should == "run Sinatra::Application"
   end
 
+  it 'creates the controller' do
+    sinixtro.create_project_dir
+    sinixtro.create_controller
+    controller_file_path = File.join(project_name, 'lib', 'controller.rb')
+    File.exist?(controller_file_path).should be_true
+  end
+
   after do
     FileUtils.rm_rf project_name
   end
