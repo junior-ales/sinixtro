@@ -24,4 +24,13 @@ class Sinixtro
 
     FileUtils.cp(File.join('.', 'templates', 'controller.rb'), lib_folder_path)
   end
+
+  def create_app_file
+    FileUtils.cp(File.join('.', 'templates', 'app.rb'), @project_name)
+  end
+
+  def create_gemfile
+    gemfile_path = File.join(@project_name, 'Gemfile')
+    FileUtils.cp(File.join('.', 'templates', 'Gemfile'), gemfile_path)
+  end
 end

@@ -26,12 +26,27 @@ describe 'Create the project' do
     File.new(configru_file_path).read.should == File.new(File.join('.', 'templates', 'config.ru')).read
   end
 
+  it 'creates the app file' do
+    sinixtro.create_project_dir
+    sinixtro.create_app_file
+    app_file_path = File.join(project_name, 'app.rb')
+    File.exist?(app_file_path).should be_true
+    File.new(app_file_path).read.should == File.new(File.join('.', 'templates', 'app.rb')).read
+  end
+
   it 'creates the controller' do
     sinixtro.create_project_dir
     sinixtro.create_controller
     controller_file_path = File.join(project_name, 'lib', 'controller.rb')
     File.exist?(controller_file_path).should be_true
     File.new(controller_file_path).read.should == File.new(File.join('.', 'templates', 'controller.rb')).read
+  end
+
+  it 'creates the Gemfile' do
+    sinixtro.create_project_dir
+    sinixtro.create_gemfile
+    gemfile_path = File.join(project_name, 'Gemfile')
+    File.exist?(gemfile_path).should be_true
   end
 
   after do
