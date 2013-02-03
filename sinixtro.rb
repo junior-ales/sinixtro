@@ -14,10 +14,8 @@ class Sinixtro
   end
 
   def create_configru
-    File.open(File.join(@project_name, 'config.ru'), 'w') do |f|
-      f.write("require './lib/controller.rb'\n")
-      f.write("run Sinatra::Application")
-    end
+    configru_file_path = File.join(@project_name, 'config.ru')
+    FileUtils.cp(File.join('.', 'templates', 'config.ru'), configru_file_path)
   end
 
   def create_controller
