@@ -32,6 +32,7 @@ describe 'Create the project' do
     sinixtro.create_controller
     controller_file_path = File.join(project_name, 'lib', 'controller.rb')
     File.exist?(controller_file_path).should be_true
+    File.new(controller_file_path).read.should == File.new(File.join('./templates/controller.rb')).read
   end
 
   after do

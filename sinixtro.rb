@@ -21,11 +21,9 @@ class Sinixtro
   end
 
   def create_controller
-    controller_file_path = File.join(@project_name, 'lib')
-    Dir.mkdir(controller_file_path)
+    lib_folder_path = File.join(@project_name, 'lib')
+    Dir.mkdir(lib_folder_path)
 
-    File.open(File.join(controller_file_path, 'controller.rb'), 'w') do |f|
-      f.write("")
-    end
+    FileUtils.cp(File.join('.', 'templates', 'controller.rb'), lib_folder_path)
   end
 end
