@@ -13,7 +13,9 @@ describe 'Create a rvmrc file' do
     sinixtro = Sinixtro.new(project_name)
     sinixtro.create_project_dir
     sinixtro.create_rvmrc
-    File.exist?(File.join(project_name, '.rvmrc')).should be_true
+    rvm_file_path = File.join(project_name, '.rvmrc') 
+    File.exist?(rvm_file_path).should be_true
+    File.new(rvm_file_path).read.should == "rvm 1.9.3@#{project_name} --create"
   end 
 
   after do

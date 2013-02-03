@@ -8,6 +8,8 @@ class Sinixtro
   end
 
   def create_rvmrc
-    File.new(File.join(@project_name, '.rvmrc'), 'w').write('')
+    File.open(File.join(@project_name, '.rvmrc'), 'w') do |f|
+      f.write("rvm 1.9.3@#{@project_name} --create")
+    end
   end
 end
