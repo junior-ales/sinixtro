@@ -12,4 +12,11 @@ class Sinixtro
       f.write("rvm 1.9.3@#{@project_name} --create")
     end
   end
+
+  def create_configru
+    File.open(File.join(@project_name, 'config.ru'), 'w') do |f|
+      f.write("require './lib/controller.rb'\n")
+      f.write("run Sinatra::Application")
+    end
+  end
 end

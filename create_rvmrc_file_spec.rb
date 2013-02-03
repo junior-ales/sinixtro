@@ -1,7 +1,7 @@
 require 'rspec'
 require './sinixtro'
 
-describe 'Create a rvmrc file' do
+describe 'Create the project' do
   let (:project_name) { 'project_name' }
   let (:sinixtro) { Sinixtro.new(project_name) }
 
@@ -17,6 +17,15 @@ describe 'Create a rvmrc file' do
     File.exist?(rvm_file_path).should be_true
     File.new(rvm_file_path).read.should == "rvm 1.9.3@#{project_name} --create"
   end 
+
+  it 'creates the config.ru file' do
+    sinixtro.create_project_dir
+    sinixtro.create_configru
+    configru_file_path = File.join(project_name, 'config.ru')
+    File.exist?(configru_file_path).should be_true
+    File.new(configru_file_path).readlines[0].should == "require './lib/controller.rb'\n"
+    File.new(configru_file_path).readlines[1].should == "run Sinatra::Application"
+  end
 
   after do
     FileUtils.rm_rf project_name
