@@ -23,7 +23,7 @@ describe 'Create the project' do
     sinixtro.create_configru
     configru_file_path = File.join(project_name, 'config.ru')
     File.exist?(configru_file_path).should be_true
-    File.new(configru_file_path).read.should == File.new(File.join('.', 'templates', 'config.ru')).read
+    File.new(configru_file_path).read.should == File.new(File.join('templates', 'config.ru')).read
   end
 
   it 'creates the app file' do
@@ -31,7 +31,7 @@ describe 'Create the project' do
     sinixtro.create_app_file
     app_file_path = File.join(project_name, 'app.rb')
     File.exist?(app_file_path).should be_true
-    File.new(app_file_path).read.should == File.new(File.join('.', 'templates', 'app.rb')).read
+    File.new(app_file_path).read.should == File.new(File.join('templates', 'app.rb')).read
   end
 
   it 'creates the controller' do
@@ -39,7 +39,7 @@ describe 'Create the project' do
     sinixtro.create_controller
     controller_file_path = File.join(project_name, 'lib', 'controller.rb')
     File.exist?(controller_file_path).should be_true
-    File.new(controller_file_path).read.should == File.new(File.join('.', 'templates', 'controller.rb')).read
+    File.new(controller_file_path).read.should == File.new(File.join('templates', 'controller.rb')).read
   end
 
   it 'creates the Gemfile' do
